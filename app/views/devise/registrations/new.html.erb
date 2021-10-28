@@ -1,4 +1,3 @@
-
 <div class="sign_up text-secondary bg-white">
   <h2 class= "text-center fw-light mb-5 pt-5">Sign up</h2>
 
@@ -15,12 +14,12 @@
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-top-0 border-end-0 border-start-0"%>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-top-0 border-end-0 border-start-0" %>
     </div>
 
     <div class= "field mb-3 ms-4 me-4">
-      <%= f.label :password_confirmation , class:"form-label text-secondary"%><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: "form-control border-top-0 border-end-0 border-start-0"  %>
+      <%= f.label :password_confirmation , class:"form-label text-secondary" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: "form-control border-top-0 border-end-0 border-start-0" %>
     </div>
 
     <div class= "mb-3 ms-4 me-4 text-center">
@@ -28,7 +27,7 @@
     </div>
 
     <div class="actions d-grid gap-2 col-8 mx-auto pb-5">
-      <%= f.submit "SIGN UP" , class: " btn btn-secondary "%>
+      <%= f.submit "SIGN UP" , class: " btn btn-secondary" %>
     </div>
   <% end %>
 </div>
