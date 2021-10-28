@@ -14,8 +14,22 @@
  *= require_self
  */
 
+body{
+  background-color: #ffe4e1;
+}
 .sign_up{
-  width: 400px;
+  width: 350px;
+  margin:  0 auto;
+  margin-top: 10%;
+ }
+
+ .sign_in{
+  width: 350px;
   margin:  0 auto;
   margin-top: 15%;
  }
+
+ .text-field{
+  border-width: none none solid none;
+ }
+
