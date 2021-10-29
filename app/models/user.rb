@@ -2,7 +2,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum role: [:Artist , :Manager]
+  enum role: [:artist , :manager]
 
-  validates :password , format: { with: /^(?=.*[A-Z])(?=.*[$@$!%*?&])/ , :multiline => true , message: "Must contain atleast One Special-Character, One Upper-Case, and Minimum-Length of 8"}, if: -> { password.present? }
+  validate :password_validation
+
+  def password_validation
+    rules = {
+      'must contain at least one uppercase letter'  => /[A-Z]+/,
+      'must contain at least one special character' => /[^A-Za-z0-9]+/
+    }
+
+    rules.each do |message, regex|
+      errors.add( :password, message ) unless password.match( regex )
+    end
+  end
 end

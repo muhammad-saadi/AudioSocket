@@ -13,24 +13,24 @@
  *= require_tree .
  *= require_self
  */
-
-body{
+@import "bootstrap/scss/bootstrap";
+body {
   background-color: #ffe4e1;
 }
 
-.sign_up{
+.sign_up {
   width: 350px;
   margin:  0 auto;
   margin-top: 10%;
  }
 
-.sign_in{
+.sign_in {
   width: 350px;
   margin:  0 auto;
   margin-top: 15%;
 }
 
-.text-field{
+.text-field {
   border-width: none none solid none;
 }
 
