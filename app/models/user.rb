@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum role: [:artist , :manager]
+  enum role: [:artist, :manager]
 
   validate :password_validation
 
