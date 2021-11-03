@@ -10,14 +10,12 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    @user =User.find_by_email(params[:user][:email])
-    if @user.present?
-      if @user.role == params[:user][:role]
-        super
-      else
-        flash.now[:notice] ="Invalid role!"
-        render 'new'
-      end
+    @user = User.find_by_email(resource_params[:email])
+    if @user&.role == params[:user][:role]
+      super
+    else
+      flash.now[:alert] = "Invalid role!"
+      render 'new'
     end
   end
 

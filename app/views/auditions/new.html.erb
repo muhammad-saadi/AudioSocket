@@ -1,0 +1,67 @@
+<div class="audition_form text-secondary bg-white">
+  <h2 class = "text-center fw-light mb-5 pt-5">Submit Audition</h2>
+
+  <%= form_for @audition, method: :POST do |f| %>
+    <% unless @audition.errors.empty? %>
+      <div class= "text-danger form-control border-white">
+      <%= render "devise/shared/error_messages", resource: @audition %>
+      </div>
+    <% end %>
+
+    <div class="field ms-4 me-4 mb-3">
+      <%= f.label :first_name, class:"form-label text-secondary" %><br />
+      <%= f.text_field :first_name, autofocus: true, class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="field ms-4 me-4 mb-3">
+      <%= f.label :last_name, class:"form-label text-secondary" %><br />
+      <%= f.text_field :last_name, class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="field ms-4 me-4 mb-3">
+      <%= f.label :email, class:"form-label text-secondary" %><br />
+      <%= f.email_field :email, autocomplete: "email", class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="field ms-4 me-4 mb-3">
+      <%= f.label :artist_name, class:"form-label text-secondary " %><br />
+      <%= f.text_field :artist_name, class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="field ms-4 me-4 mb-3 song-link">
+      <%= f.label :song_link, class:"form-label text-secondary" %><br />
+      <%= f.text_field :song_link, class:"border-top-0 border-end-0 border-start-0 form-control", multiple: true %>
+    </div>
+
+    <div class="dynamic-inputs field ms-4 me-4 mb-3 song-link"></div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end me-4">
+      <button class="actions btn btn-light add-song-link">ADD MORE</button>
+    </div>
+
+    <div class= "field mb-3 ms-4 me-4 ">
+      <%= f.label :genre, class:"form-label" %><br />
+      <%= f.select :genre, Audition.genre, {}, multiple: "multiple", class:"form-control js-example-theme-multiple d-block source"%>
+    </div>
+
+    <div class= "field mb-3 ms-4 me-4 ">
+      <%= f.label :source, value:'how did you hear about us?', class:"form-label" %><br />
+      <%= f.select :source, Audition.source,{}, class:"form-control js-example-theme-single d-block source", id: 'dropdown' %>
+    </div>
+
+    <div class="field ms-4 me-4 mb-3 other-source">
+      <%= f.label :other_source, class:"form-label text-secondary" %><br />
+      <%= f.text_field :other_source, class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="field ms-4 me-4 mb-3">
+      <%= f.label :additional_info, class:"form-label text-secondary" %><br />
+      <%= f.text_area :additional_info, class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="actions d-grid gap-2 col-8 mx-auto pb-5">
+      <%= f.submit "SUBMIT AUDITION", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
+
