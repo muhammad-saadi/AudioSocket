@@ -1,10 +1,9 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
+  var max_fields = 4;
+  var wrapper = $('.song-link');
+  var add_button = $('.add-song-link');
 
-  var max_fields      = 4;
-  var wrapper       = $('.song-link');
-  var add_button      = $('.add-song-link');
-
-  var x = 1; //initlal text box count
+  var x = 1;
   $(add_button).click(function(e){
     e.preventDefault();
     if(x < max_fields){
@@ -13,9 +12,7 @@ $(document).ready(function() {
     }
   });
 
-  $( ".source" ).select2({
-    theme: "bootstrap"
-  });
+  $( ".source" ).select2({ theme: "bootstrap" });
 
   $('.js-example-theme-multiple').select2();
 
@@ -32,5 +29,4 @@ $(document).ready(function() {
       $('.other-source').css('display', 'none');
     }
   });
-
 });

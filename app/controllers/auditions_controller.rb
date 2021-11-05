@@ -6,8 +6,8 @@ class AuditionsController < ApplicationController
   def create
     @audition = Audition.new(get_params)
     # @audition.genre = params[:audition][:genre]
-    if @audition.save!
-      redirect_to new_user_session_path
+    if @audition.save
+      redirect_to 'root'
     else
       render 'new'
     end
@@ -15,6 +15,6 @@ class AuditionsController < ApplicationController
 
   private
   def get_params
-    params.require(:audition).permit(:first_name , :last_name, :email, :artist_name, :additional_info, :other_source, song_link: [], genre: [], source: [])
+    params.require(:audition).permit(:first_name , :last_name, :email, :artist_name, :additional_info, :source, :other_source, song_link: [], genre: [])
   end
 end

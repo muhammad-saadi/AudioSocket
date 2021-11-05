@@ -7,5 +7,8 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
-require("packs/auditions.js");
+require('jquery')
+import jquery from 'jquery'
+window.$ = window.jquery = jquery;
+require('../packs/auditions');
 require("select2");
