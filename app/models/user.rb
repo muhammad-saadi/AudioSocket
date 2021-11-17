@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  include DeviseInvitable::Inviter
+  attribute :email_content
+  devise :database_authenticatable, :confirmable, :invitable
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   enum role: [:artist, :manager]
