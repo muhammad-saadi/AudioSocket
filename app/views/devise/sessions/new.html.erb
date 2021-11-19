@@ -1,15 +1,19 @@
 <div class="sign_in text-secondary bg-white">
-  <h2 class = "text-center fw-light mb-5 pt-5">Login</h2>
+  <h2 class="text-center fw-light mb-5 pt-5">Login</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), method: :POST) do |f| %>
     <div class="field ms-4 me-4 mb-3">
       <%= f.label :email, class:"form-label text-secondary" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"border-top-0 border-end-0 border-start-0  form-control" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"border-top-0 border-end-0 border-start-0 form-control" %>
     </div>
 
     <div class="field ms-4 me-4 mb-3">
-      <%= f.label :password, class:"form-label text-secondary " %><br />
-      <%= f.password_field :password, autocomplete: "current-password" , class:"border-top-0 border-end-0 border-start-0 form-control" %>
+      <%= f.label :password, class:"form-label text-secondary" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class:"border-top-0 border-end-0 border-start-0 form-control" %>
+    </div>
+
+    <div class="mb-3 ms-4 me-4 text-center">
+      <%= f.select :role, collection: User.roles.keys.to_a %>
     </div>
 
     <% if devise_mapping.rememberable? %>
@@ -20,11 +24,11 @@
     <% end %>
 
     <div class="actions d-grid gap-2 col-8 mx-auto pb-5">
-      <%= f.submit "SIGN IN" , class: "btn btn-secondary" %>
+      <%= f.submit "SIGN IN", class:"btn btn-secondary" %>
     </div>
   <% end %>
 </div>
 
-<div class= "text-center">
+<div class="text-center">
   <%= render "devise/shared/links" %>
 </div>

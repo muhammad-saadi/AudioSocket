@@ -13,24 +13,46 @@
  *= require_tree .
  *= require_self
  */
+
+@import "select2";
+@import "select2-bootstrap";
 @import "bootstrap/scss/bootstrap";
+
 body {
   background-color: #ffe4e1;
 }
 
 .sign_up {
   width: 350px;
-  margin:  0 auto;
+  margin: 0 auto;
   margin-top: 10%;
- }
+}
 
 .sign_in {
   width: 350px;
-  margin:  0 auto;
-  margin-top: 15%;
-}
+  margin: 0 auto;
+  margin-top: 10%;
+ }
 
 .text-field {
   border-width: none none solid none;
 }
 
+.audition_form {
+  width: 550px;
+  margin: 0 auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.other-source {
+  display: none;
+}
+
+.audition_listing {
+  background-color: white;
+  width: 1350px;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 10%;
+}
