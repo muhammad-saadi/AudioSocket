@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include DeviseInvitable::Inviter
+  has_one :artist_profile
   attribute :email_content
   devise :database_authenticatable, :confirmable, :invitable
   devise :invitable, :database_authenticatable, :registerable,

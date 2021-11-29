@@ -12,11 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     @user = User.find_by_email(resource_params[:email])
     if @user&.role == params[:user][:role]
-      if @user&.role == 'manager'
-        redirect_to audition_listing_portal_path
-      else
-        super
-      end
+      super
     else
       flash.now[:alert] = "Invalid role!"
       render 'new'

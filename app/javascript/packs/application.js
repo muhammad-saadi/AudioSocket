@@ -8,6 +8,7 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("packs/auditions.js");
+require("packs/artist_profiles.js")
 require("select2");
 import $ from 'jquery';
 global.$ = jQuery;

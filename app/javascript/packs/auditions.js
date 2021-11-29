@@ -45,4 +45,24 @@ $(document).on('turbolinks:load', function() {
 
       });
   });
+
+  // $( document ).ready(function() {
+  //     $(".track-status").on('click',function(event){
+  //       event.preventDefault();
+  //     $.ajax({
+  //       url: "/submit",
+  //       data: {
+  //         status: $(this).val(),
+  //         id: $(this).attr("id"),
+  //         album_id: $(this).attr("album_id")
+  //       },
+  //       type: 'POST',
+  //       error: function() {alert('error');},
+  //       success: function(response){
+  //         alert('updated');
+  //       }
+  //     });
+
+  //     });
+  // });
 });

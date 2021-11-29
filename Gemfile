@@ -28,8 +28,11 @@ gem "letter_opener", group: :development
 gem 'devise'
 
 gem 'devise_invitable', '~> 2.0.0'
+gem 'image_processing', '~> 1.2'
 
 gem  'select2-rails'
+gem 'braintree'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

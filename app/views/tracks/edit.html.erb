@@ -1,0 +1,27 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end py-2 pe-5 bg-white">
+  <%= link_to "Logout",destroy_user_session_path , method: :delete, class:"text-secondary fs-5 text-decoration-none bg-light p-2" %>
+</div>
+
+<div class="container row container-height ps-0">
+  <div class="col-4 bg-white mt-5 mb-0 my-0 ms-2 py-0">
+    <p class="fs-4"><%= link_to 'Profile',profile_artist_profile_path, class:"text-muted" %></p>
+    <p><%= link_to 'Music', artist_profile_albums_path(current_user.artist_profile),class:"text-muted" %></p>
+  </div>
+
+  <div class="col-4 pt-5">
+    <div class="bg-secondary">
+    <p class="fw-3">Edit Track</p>
+  </div>
+
+  <div class="col-3">
+    <p><%= form_for @track,url: artist_profile_album_track_path do |f| %></p>
+      <p><%= f.label :change_track %></p>
+      <p><%= f.file_field :song_link %></p>
+      <p><%= f.label :change_title %></p>
+      <p><%= f.text_field :title %></p>
+      <p><%= f.submit 'save & submit', class:"btn btn-light" %></p>
+      <p><%= f.submit 'ADD TO ALBUM & SAVE', class:"btn btn-secondary" %>
+    <%end%>
+    </div>
+  </div>
+</div>

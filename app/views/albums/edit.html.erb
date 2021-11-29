@@ -1,0 +1,9 @@
+<div class="album text-center">
+  <p>
+    <p><%= form_for @album,url: artist_profile_album_path do |f| %></p>
+    <p><%= f.label :album_name %></p>
+    <p><%= f.text_field :album_name %></p>
+    <p><%= f.submit %>
+    <%end%>
+  </p>
+</div>

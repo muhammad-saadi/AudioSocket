@@ -1,3 +1,6 @@
+<div class="d-grid justify-content-md-end py-2 pe-5 bg-secondary">
+  <%= link_to "Logout",destroy_user_session_path , method: :delete, class:"text-secondary fs-5 text-decoration-none bg-light" %>
+</div>
 <div class="row bg-secondary bg-opacity-50 mt-5 ms-5">
   <div class="col-6">
     <%= link_to "All(#{Audition.count(:status)})" %>
@@ -55,7 +58,7 @@
 </div>
 
 <div class="modal fade" id="audition-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog border border-secondary">
+  <div class="çodal-dialog border border-secondary">
     <div class="modal-content" >
       <div id="content"></div>
     </div>
