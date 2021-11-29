@@ -30,11 +30,13 @@ class TracksController < ApplicationController
   def edit
     @track = Track.find(params[:id])
     @album = Album.find(params[:album_id])
+      respond_to do |format|
+        format.js
+      end
   end
 
   def update
     @track = Track.find(params[:id])
-
     if params[:commit] == 'save & submit'
       @track.status = 'submitted'
       @album = Album.find(params[:album_id])

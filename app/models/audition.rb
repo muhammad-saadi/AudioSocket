@@ -31,21 +31,6 @@ Have a great day!".freeze
     ['pending', 'accepted', 'rejected', 'deleted']
   end
 
-  # def set_default_mail
-  #   self.status_mail ||=
-
-
-#   def self.status_mail
-#     ['Hi
-
-# Thanks for submitting music to Audiosocket, we have listened to your link and would love to work with you!
-
-# Please sign in to our artist portal here. There, you can update your artist profile, submit music, artworks, etc. The more assets you can give us the better. Once submitted, our team will review and will start the ingestion into our catalog.
-
-# Thanks!
-# Music Licensing Coordinator']
-# end
-
   def self.to_csv
     attributes = %w{id first_name artist_name email genre created_at assigned status}
 

@@ -8,7 +8,6 @@ class ArtistProfilesController < ApplicationController
 
   def create
     current_user.artist_profile = ArtistProfile.new(artist_profile_params)
-    #current_user.artist_profile.save!
     redirect_to artist_profile_path(current_user.artist_profile)
   end
 

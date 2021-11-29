@@ -4,14 +4,11 @@
 
 <div class="modal-body album text-center">
   <p>
-    <script src="https://js.stripe.com/v3/"></script>
     <p><%= form_for @track,url: artist_profile_album_tracks_path, method: :post do |f| %></p>
     <p><%= f.label :title %></p>
     <p><%= f.text_field :title %></p>
     <p><%= f.label :Add_Song %></p>
     <p><%= f.file_field :song_link %></p>
-    <%= stripe_javascript_tag %>
-<%= stripe_elements_tag submit_path: billing_path %>
     <p><%= f.submit 'ADD TO ALBUM & SUBMIT', class:"btn btn-light" %></button>
     <p><%= f.submit 'ADD TO ALBUM & SAVE', class:"btn btn-secondary" %>
     <%end%>
