@@ -4,7 +4,7 @@
 
 <div class="modal-body">
   <p>
-    <%= form_for :audition, :url => audition_send_mail_path(@audition), method: :post do |f| %>
+    <%= form_for :audition, :url => send_mail_manager_audition_path(@audition), method: :post do |f| %>
       <%= f.text_area :status_mail, class:"form-control border-0", size: "30x10" %>
       <div class="mt-5 mb-0 text-center btn-secondary">
         <%= f.submit 'send mail' %>
@@ -14,5 +14,5 @@
 </div>
 
 <div class="modal-footer border-0 p-0 m-0">
-  <button type="button" class="btn btn-secondary" id="<%= audition.id %>" value='send'><%= link_to 'accept',audition_send_mail_path(audition) %></button>
+  <button type="button" class="btn btn-secondary" id="<%= audition.id %>" value='send'><%= link_to 'accept',send_mail_manager_audition_path(audition) %></button>
 </div>

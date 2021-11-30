@@ -1,16 +1,22 @@
-<div class="modal-header">
-  <h5 class="modal-title" id="trackModalLabel">Track</h5>
+<div class="modal-header album">
+  <h5 class="modal-title" id="trackModalLabel">Create Track</h5>
 </div>
 
-<div class="modal-body album text-center">
-  <p>
-    <p><%= form_for @track,url: artist_profile_album_tracks_path, method: :post do |f| %></p>
-    <p><%= f.label :title %></p>
-    <p><%= f.text_field :title %></p>
-    <p><%= f.label :Add_Song %></p>
-    <p><%= f.file_field :song_link %></p>
-    <p><%= f.submit 'ADD TO ALBUM & SUBMIT', class:"btn btn-light" %></button>
-    <p><%= f.submit 'ADD TO ALBUM & SAVE', class:"btn btn-secondary" %>
+<div class="modal-body album">
+    <%= form_for @track,url: album_tracks_path, method: :post do |f| %>
+      <div>
+        <p class="mb-0"><%= f.label :title, class:"form-label" %></p>
+        <p><%= f.text_field :title, class:"form-control"%></p>
+      </div>
+
+      <div>
+        <p class="mb-0"><%= f.label :Add_Song, class:"form-label" %></p>
+        <p><%= f.file_field :song_link, class:"form-control" %></p>
+      </div>
+
+      <div class="actions text-center">
+        <p><%= f.submit 'ADD TO ALBUM & SUBMIT', class:"btn btn-secondary" %></button>
+        <p><%= f.submit 'ADD TO ALBUM & SAVE', class:"btn btn-light" %>
+      </div>
     <%end%>
-  </p>
 </div>

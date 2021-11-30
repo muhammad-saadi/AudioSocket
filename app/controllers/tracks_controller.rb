@@ -1,11 +1,11 @@
 class TracksController < ApplicationController
+  before_action :get_album
+  before_action :get_track, only: [:edit , :update, :destroy]
   def index
-    @album = Album.find(params[:album_id])
     @tracks = @album.tracks
   end
 
   def new
-    @artist = Album.find(params[:album_id])
     @track = Track.new
     respond_to do |format|
       format.js
@@ -13,7 +13,6 @@ class TracksController < ApplicationController
   end
 
   def create
-    @album= Album.find(params[:album_id])
     @track = @album.tracks.create(track_params)
     if params[:commit] == 'ADD TO ALBUM & SUBMIT'
       @track.status = 'submitted'
@@ -21,40 +20,42 @@ class TracksController < ApplicationController
       @album.save
     end
     if @track.save
-      redirect_to artist_profile_album_tracks_path(current_user.artist_profile, @album)
+      redirect_to album_tracks_path(@album)
     else
       render 'new'
     end
   end
 
   def edit
-    @track = Track.find(params[:id])
-    @album = Album.find(params[:album_id])
-      respond_to do |format|
-        format.js
-      end
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
-    @track = Track.find(params[:id])
     if params[:commit] == 'save & submit'
       @track.status = 'submitted'
-      @album = Album.find(params[:album_id])
       @album.status = 'submitted'
       @album.save
     end
     @track.update(track_params)
-    redirect_to artist_profile_album_tracks_path
+    redirect_to album_tracks_path(@album)
   end
 
   def destroy
-    @track = Track.find(params[:id])
-    @album = Album.find(params[:album_id])
     @track.destroy
-      redirect_to artist_profile_album_tracks_path(current_user.artist_profile, @album)
+    redirect_to album_tracks_path(@album)
   end
 
   private
+
+  def get_album
+    @album = Album.find(params[:album_id])
+  end
+
+  def get_track
+    @track = Track.find(params[:id])
+  end
 
   def track_params
     params.require(:track).permit(:title, :album_id, :status, :song_link)

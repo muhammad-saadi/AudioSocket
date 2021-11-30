@@ -11,7 +11,7 @@
   </div>
 
   <div class="col-6 d-grid justify-content-md-end pe-5">
-    <%= form_tag(audition_listing_portal_path, method: "get") do %>
+    <%= form_tag(manager_auditions_path, method: "get") do %>
     <%= text_field_tag(:query) %>
     <%= submit_tag("Search") %>
     <% end %>
@@ -19,7 +19,7 @@
 </div>
 
 <div class="d-grid justify-content-md-end pt-2 pe-5">
-  <%= link_to "EXPORT CSV", audition_listing_portal_path(request.params.merge(format: 'csv')), class:"btn btn-secondary" %>
+  <%= link_to "EXPORT CSV", manager_auditions_path(request.params.merge(format: 'csv')), class:"btn btn-secondary" %>
 </div>
 
 <div class="audition_listing p-1">
@@ -41,7 +41,7 @@
       <tr class="aud-id" id="<%= audition.id %>">
         <td><%= audition.id %></td>
         <td>
-          <%=link_to "#{audition.first_name} #{audition.last_name}", audition_path(audition), data: {bs_toggle: 'modal', bs_target: '#audition-details', remote: true}, class:"text-reset text-decoration-none" %>
+          <%=link_to "#{audition.first_name} #{audition.last_name}", manager_audition_path(audition), data: {bs_toggle: 'modal', bs_target: '#audition-details', remote: true}, class:"text-reset text-decoration-none" %>
         </td>
         <td><%= audition.artist_name %></td>
         <td><%= audition.email %></td>
@@ -58,7 +58,7 @@
 </div>
 
 <div class="modal fade" id="audition-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="çodal-dialog border border-secondary">
+  <div class="modal-dialog border border-secondary">
     <div class="modal-content" >
       <div id="content"></div>
     </div>

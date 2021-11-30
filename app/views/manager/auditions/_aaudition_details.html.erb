@@ -35,7 +35,7 @@
 </div>
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary border-1 bg-light" id="<%= audition.id %>"><%= link_to 'accept', audition_accept_mail_path(audition, status: "accepted"), data: {bs_toggle: "modal", bs_target: "#acceptMail", remote: true, class:"status"} %> </button>
+  <button type="button" class="btn btn-secondary border-1 bg-light" id="<%= audition.id %>"><%= link_to 'accept', accept_mail_manager_audition_path(audition, status: "accepted"), data: {bs_toggle: "modal", bs_target: "#acceptMail", remote: true, class:"status"} %> </button>
   <button type="button" class="btn btn-secondary status" id="<%= audition.id %>" value='deleted'>delete</button>
-  <button type="button" class="btn btn-secondary status" id="<%= audition.id %>" value='rejected'><%= link_to 'reject', audition_accept_mail_path(audition, status: "rejected"), data: {bs_toggle: "modal", bs_target: "#acceptMail", remote: true, class:"status"} %> </button>
+  <button type="button" class="btn btn-secondary status" id="<%= audition.id %>" value='rejected'><%= link_to 'reject', accept_mail_manager_audition_path(audition, status: "rejected"), data: {bs_toggle: "modal", bs_target: "#acceptMail", remote: true, class:"status"} %> </button>
 </div>

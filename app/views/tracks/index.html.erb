@@ -4,7 +4,7 @@
 
 <div class="container row container-height ">
   <div class="col-4 mt-5 mb-0 mh-100 my-0 py-0 mw-30 content-table">
-    <p><%= link_to 'Profile',profile_artist_profile_path, class:"text-muted" %></p>
+    <p><%= link_to 'Profile', profile_artist_profile_path, class:"text-muted" %></p>
     <p class="fs-4">Music</p>
   </div>
 
@@ -26,7 +26,7 @@
       </div>
 
       <div class="col-6 d-grid justify-content-md-end">
-        <button class="btn btn-secondary text-light "><%= link_to 'CREATE Track', new_artist_profile_album_track_path, data: {bs_toggle: 'modal', bs_target: '#createTrack', remote: true}, class:"text-reset text-decoration-none" %></button>
+        <button class="btn btn-secondary text-light "><%= link_to 'CREATE Track', new_album_track_path(@album), data: {bs_toggle: 'modal', bs_target: '#createTrack', remote: true}, class:"text-reset text-decoration-none" %></button>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
             </td>
             <td>
               <% if al.status == 'submit' %>
-                <%= link_to 'delete', artist_profile_album_track_path(current_user.artist_profile,@album, al), method: :delete %> <%= link_to "edit", edit_artist_profile_album_track_path(current_user.artist_profile,@album, al), data: { bs_toggle: 'modal', bs_target: '#editTrack', remote: true} %></p>
+                <%= link_to 'delete', album_track_path(@album, al), method: :delete %> <%= link_to "edit", edit_album_track_path(@album, al), data: { bs_toggle: 'modal', bs_target: '#editTrack', remote: true} %></p>
               <% else %>
                 <p class="text-secondary">delete edit</p>
               <% end %>
@@ -76,7 +76,7 @@
 </div>
 
 <div class="modal fade" id="editTrack" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
-  <div class="çodal-dialog border border-secondary">
+  <div class="modal-dialog border border-secondary">
     <div class="modal-content" >
       <div id="trackkk"></div>
     </div>

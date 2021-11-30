@@ -14,7 +14,7 @@
         <h4>Album</h4>
       </div>
       <div class="col-6 d-grid justify-content-md-end">
-        <button class="btn btn-secondary text-light"><%= link_to 'CREATE ALBUM', new_artist_profile_album_path, data: {bs_toggle: 'modal', bs_target: '#createAlbum', remote: true}, class:"text-reset text-decoration-none" %></button>
+        <button class="btn btn-secondary text-light"><%= link_to 'CREATE ALBUM', new_album_path, data: {bs_toggle: 'modal', bs_target: '#createAlbum', remote: true}, class:"text-reset text-decoration-none" %></button>
       </div>
     </div>
 
@@ -22,10 +22,10 @@
       <table class="table">
         <tbody>
           <tr>
-            <td><h5><%=link_to al.album_name, artist_profile_album_tracks_path(@artist, al), class:"text-reset text-decoration-none" %></h5></td>
+            <td><h5><%=link_to al.album_name, album_tracks_path(al), class:"text-reset text-decoration-none" %></h5></td>
             <td class="d-grid justify-content-md-end">
               <% if al.status == 'submit' %>
-                <p><%= link_to 'delete', artist_profile_album_path(@artist, al), method: :delete %> <%= link_to "edit", edit_artist_profile_album_path(@artist, al) %></p>
+                <p><%= link_to 'delete', album_path(al), method: :delete %> <%= link_to "edit", edit_album_path(al) %></p>
               <% else %>
                 <p class="text-secondary">delete edit</p>
               <% end %></td>

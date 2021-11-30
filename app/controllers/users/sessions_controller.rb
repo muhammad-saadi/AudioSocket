@@ -12,6 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     @user = User.find_by_email(resource_params[:email])
     if @user&.role == params[:user][:role]
+      byebug
       super
     else
       flash.now[:alert] = "Invalid role!"

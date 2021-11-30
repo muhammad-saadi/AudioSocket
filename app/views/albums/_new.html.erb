@@ -4,7 +4,7 @@
 
 <div class="modal-body album text-center">
   <p>
-    <p><%= form_for @album,url: artist_profile_albums_path, method: :post do |f| %></p>
+    <p><%= form_for @album,url: albums_path, method: :post do |f| %></p>
     <p><%= f.label :album_name %></p>
     <p><%= f.text_field :album_name %></p>
     <p><%= f.label :Select_Artwork %></p>
