@@ -21,9 +21,11 @@ class ArtistProfilesController < ApplicationController
 
   def pay
     payment = Payment.payment(params[:nonce])
-      debugger
     if payment.success? || payment.transaction
-      redirect_to artist_profile_path(current_user.artist_profile)
+      logger.info("transaction done")
+      @artist.pro = true
+      @artist.save
+      redirect_to artist_profile_path
     else
       flash[:error] = "Error occured during payment"
       redirect_to edit_artist_profile_path(current_user.artist_profile)

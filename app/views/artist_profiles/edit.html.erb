@@ -43,17 +43,20 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button class="actions btn btn-light add-social-link">ADD MORE</button>
     </div>
-    <div class="actions">
+
+    <% if @artist.pro == false %>
+    <div class="actions btn btn-secondary text-center">
+      <%= link_to 'Upgrade To Pro', upgrade_artist_profile_path, data: {bs_toggle: 'modal', bs_target: '#upgrade-to-pro', remote: true}, class:"text-light text-decoration-none" %>
+    </div>
+    <% end %>
+
+    <div class="actions text-center">
       <%= f.submit "update", class:"btn btn-light btn-secondary btn-sm" %>
     </div>
   <% end %>
 </div>
 
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="actions btn btn-light bg-secondary">
-        <%= link_to 'Upgrade To Pro', artist_profile_upgrade_path(@artist), data: {bs_toggle: 'modal', bs_target: '#upgrade-to-pro', remote: true}, class:"text-light text-decoration-none" %>
-      </button>
-    </div>
+
 
 
 <div class="modal fade" id="upgrade-to-pro" tabindex="-1" aria-labelledby="Label" aria-hidden="true">

@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body">
 <div>
-  <%= form_with url: transaction_artist_profile_path, id: "payment-form", local: false do |f| %>
+  <%= form_with url: pay_artist_profile_path, id: "payment-form", local: false do |f| %>
     <div id="dropin-container"></div>
     <%= f.hidden_field :nonce, id: 'nonce' %>
     <div class="actions">
@@ -14,31 +14,4 @@
 </div>
 </div>
 
-<script src="https://js.braintreegateway.com/web/dropin/1.32.1/js/dropin.min.js"></script>
 
-<script>
-  var form = $('#payment-form');
-  var submitButton = $('#payment-submission');
-  var client_token = "<%= @client_token %>";
-
-  braintree.dropin.create({
-    authorization: client_token,
-    selector: '#dropin-container'
-  }, function (err, dropinInstance) {
-    if (err) {
-      console.log('braintree Error',err);
-      return;
-    }
-    submitButton.on('click', function (event) {
-      dropinInstance.requestPaymentMethod(function (err, payload) {
-
-          if (err) {
-            console.log('payload Error', err);
-          }
-
-          $('#nonce').val(payload.nonce);
-          form.submit();
-        });
-    });
-  });
-</script>
