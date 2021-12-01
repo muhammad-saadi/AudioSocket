@@ -1,6 +1,7 @@
 class ArtistProfilesController < ApplicationController
-  before_action :get_artist, only: [:upgrade, :pay, :profile, :edit, :update, :Show]
-  def  new
+  before_action :get_artist, only: [:upgrade, :pay, :profile, :edit, :update, :show]
+
+  def new
     @artist = ArtistProfile.new
     @artist.email = current_user.email
     @audition = Audition.find_by_email(@artist.email)
@@ -14,9 +15,6 @@ class ArtistProfilesController < ApplicationController
 
   def upgrade
     @client_token = Payment.generate_token
-    respond_to do |format|
-      format.js
-    end
   end
 
   def pay
@@ -27,7 +25,7 @@ class ArtistProfilesController < ApplicationController
       @artist.save
       redirect_to artist_profile_path
     else
-      flash[:error] = "Error occured during payment"
+      flash[:error] = "Error occurred during payment"
       redirect_to edit_artist_profile_path(current_user.artist_profile)
     end
   end
@@ -53,6 +51,6 @@ class ArtistProfilesController < ApplicationController
   end
 
   def artist_profile_params
-    params.require(:artist_profile).permit(:artist_name, :email, :avatar, :country, :website_link, :bio, social_link:[])
+    params.require(:artist_profile).permit(:artist_name, :email, :avatar, :country, :website_link, :bio, social_link: [])
   end
 end

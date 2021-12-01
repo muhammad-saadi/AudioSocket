@@ -1,6 +1,7 @@
 class TracksController < ApplicationController
   before_action :get_album
-  before_action :get_track, only: [:edit , :update, :destroy]
+  before_action :get_track, only: [:edit, :update, :destroy]
+
   def index
     @tracks = @album.tracks
   end

@@ -1,5 +1,5 @@
 <div class="d-grid justify-content-md-end py-2 pe-5 bg-secondary">
-  <%= link_to "Logout",destroy_user_session_path , method: :delete, class:"text-secondary fs-5 text-decoration-none bg-light" %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-secondary fs-5 text-decoration-none bg-light" %>
 </div>
 <div class="row bg-secondary bg-opacity-50 mt-5 ms-5">
   <div class="col-6">
@@ -12,46 +12,46 @@
 
   <div class="col-6 d-grid justify-content-md-end pe-5">
     <%= form_tag(manager_auditions_path, method: "get") do %>
-    <%= text_field_tag(:query) %>
-    <%= submit_tag("Search") %>
+      <%= text_field_tag(:query) %>
+      <%= submit_tag("Search") %>
     <% end %>
   </div>
 </div>
 
 <div class="d-grid justify-content-md-end pt-2 pe-5">
-  <%= link_to "EXPORT CSV", manager_auditions_path(request.params.merge(format: 'csv')), class:"btn btn-secondary" %>
+  <%= link_to "EXPORT CSV", manager_auditions_path(request.params.merge(format: 'csv')), class: "btn btn-secondary" %>
 </div>
 
 <div class="audition_listing p-1">
   <table class="table text-secondary">
-    <th>
+    <thead>
       <tr>
-        <td><h6><%= link_to 'ID', sort:'id' %></h6></td>
-        <td><h6><%= link_to 'NAME', sort:'first_name' %></h6></td>
-        <td><h6><%= link_to 'ARTIST', sort:'artist_name' %></h6></td>
-        <td><h6><%= link_to 'EMAIL', sort:'email' %></h6></td>
-        <td><h6><%= link_to 'GENRES', sort:'genre' %></h6></td>
-        <td><h6><%= link_to 'SUBMITTED', sort:'created_at' %></h6></td>
+        <td><h6><%= link_to 'ID', sort: 'id' %></h6></td>
+        <td><h6><%= link_to 'NAME', sort: 'first_name' %></h6></td>
+        <td><h6><%= link_to 'ARTIST', sort: 'artist_name' %></h6></td>
+        <td><h6><%= link_to 'EMAIL', sort: 'email' %></h6></td>
+        <td><h6><%= link_to 'GENRES', sort: 'genre' %></h6></td>
+        <td><h6><%= link_to 'SUBMITTED', sort: 'created_at' %></h6></td>
         <td><h6>ASSIGNED TO</h6></td>
-        <td><h6><%= link_to 'STATUS', sort:'status' %></h6></td>
+        <td><h6><%= link_to 'STATUS', sort: 'status' %></h6></td>
       </tr>
-    </th>
+    </thead>
     <tbody>
       <% @auditions.order(params[:sort]).each do |audition| %>
-      <tr class="aud-id" id="<%= audition.id %>">
-        <td><%= audition.id %></td>
-        <td>
-          <%=link_to "#{audition.first_name} #{audition.last_name}", manager_audition_path(audition), data: {bs_toggle: 'modal', bs_target: '#audition-details', remote: true}, class:"text-reset text-decoration-none" %>
-        </td>
-        <td><%= audition.artist_name %></td>
-        <td><%= audition.email %></td>
-        <td><%= audition.genre.reject(&:blank?).join(', ') %></td>
-        <td><%= audition.created_at %></td>
-        <td>
-          <%= select_tag :assigned, options_from_collection_for_select( User.where(role: 'manager'), "email", "email"), class:'form-control d-block assigned' , remote:true, id: audition.id %>
-        </td>
-        <td><%= audition.status %></td>
-      </tr>
+        <tr class="aud-id" id="<%= audition.id %>">
+          <td><%= audition.id %></td>
+          <td>
+            <%= link_to "#{audition.first_name} #{audition.last_name}", manager_audition_path(audition), data: { bs_toggle: 'modal', bs_target: '#audition-details', remote: true }, class: "text-reset text-decoration-none" %>
+          </td>
+          <td><%= audition.artist_name %></td>
+          <td><%= audition.email %></td>
+          <td><%= audition.genre.reject(&:blank?).join(', ') %></td>
+          <td><%= audition.created_at %></td>
+          <td>
+            <%= select_tag :assigned, options_from_collection_for_select(User.where(role: 'manager'), "email", "email"), class: 'form-control d-block assigned', remote: true, id: audition.id %>
+          </td>
+          <td><%= audition.status %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
@@ -59,7 +59,7 @@
 
 <div class="modal fade" id="audition-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog border border-secondary">
-    <div class="modal-content" >
+    <div class="modal-content">
       <div id="content"></div>
     </div>
   </div>

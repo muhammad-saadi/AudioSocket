@@ -3,15 +3,13 @@
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-<div>
-  <%= form_with url: pay_artist_profile_path, id: "payment-form", local: false do |f| %>
-    <div id="dropin-container"></div>
-    <%= f.hidden_field :nonce, id: 'nonce' %>
-    <div class="actions">
-    <%= f.submit 'Submit', id:'payment-submission' %>
-    </div>
-  <% end %>
+  <div>
+    <%= form_with url: pay_artist_profile_path, id: "payment-form", local: false do |f| %>
+      <div id="dropin-container"></div>
+      <%= f.hidden_field :nonce, id: 'nonce' %>
+      <div class="actions">
+        <%= f.submit 'Submit', id: 'payment-submission' %>
+      </div>
+    <% end %>
+  </div>
 </div>
-</div>
-
-

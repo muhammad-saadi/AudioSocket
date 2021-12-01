@@ -4,12 +4,12 @@
 
 <div class="modal-body album text-center">
   <p>
-    <p><%= form_for @album,url: albums_path, method: :post do |f| %></p>
+    <%= form_for @album, url: albums_path, method: :post do |f| %>
     <p><%= f.label :album_name %></p>
     <p><%= f.text_field :album_name %></p>
     <p><%= f.label :Select_Artwork %></p>
     <p><%= f.file_field :artwork %></p>
     <p><%= f.submit %>
-    <%end%>
+  <% end %>
   </p>
 </div>

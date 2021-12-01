@@ -4,38 +4,38 @@
   <%= form_for @artist, url: artist_profile_path do |f| %>
 
     <div class="field ms-4 mb-3 row">
-      <%= f.label :artist_name, class:"text-secondary col-6" %>
-      <%= f.text_field :artist_name, readonly: true, class:"border-top-0 border-end-0 border-start-0 col-6" %>
+      <%= f.label :artist_name, class: "text-secondary col-6" %>
+      <%= f.text_field :artist_name, readonly: true, class: "border-top-0 border-end-0 border-start-0 col-6" %>
     </div>
 
     <div class="field ms-4 mb-3 row">
-      <%= f.label :email, class:" text-secondary col-6" %>
-      <%= f.email_field :email, autocomplete:"email", class:"border-top-0 border-end-0 border-start-0 col-6 mw-30" %>
+      <%= f.label :email, class: " text-secondary col-6" %>
+      <%= f.email_field :email, autocomplete: "email", class: "border-top-0 border-end-0 border-start-0 col-6 mw-30" %>
     </div>
 
     <div class="field mb-3 ms-4 row">
-      <%= f.label :country, class:"text-secondary col-6" %>
-      <%= f.select :country, ArtistProfile.country, class:"col-6" %>
+      <%= f.label :country, class: "text-secondary col-6" %>
+      <%= f.select :country, ArtistProfile.country, class: "col-6" %>
     </div>
 
     <div class="field mb-3 ms-4 row">
-      <%= f.label :profile_image, class:"text-secondary col-6" %>
-      <%= f.file_field :avatar, class:"col-6" %>
+      <%= f.label :profile_image, class: "text-secondary col-6" %>
+      <%= f.file_field :avatar, class: "col-6" %>
     </div>
 
     <div class="field mb-3 ms-4 row">
-      <%= f.label :bio, class:"col-6" %>
-      <%= f.text_area :bio, class:"d-block col-6" %>
+      <%= f.label :bio, class: "col-6" %>
+      <%= f.text_area :bio, class: "d-block col-6" %>
     </div>
 
     <div class="field ms-4 mb-3 row">
-      <%= f.label :website_link, class:"text-secondary pe-5 col-6" %>
-      <%= f.text_field :website_link, class:"border-top-0 border-end-0 border-start-0 col-6" %>
+      <%= f.label :website_link, class: "text-secondary pe-5 col-6" %>
+      <%= f.text_field :website_link, class: "border-top-0 border-end-0 border-start-0 col-6" %>
     </div>
 
     <div class="field ms-4 mb-3 social-link row">
-      <%= f.label :social_link, class:"text-secondary col-6" %>
-      <%= f.text_field :social_link, class:"border-top-0 border-end-0 border-start-0 mb-3 social-input col-6", multiple: true %>
+      <%= f.label :social_link, class: "text-secondary col-6" %>
+      <%= f.text_field :social_link, class: "border-top-0 border-end-0 border-start-0 mb-3 social-input col-6", multiple: true %>
     </div>
 
     <div class="dynamic-inputs field ms-4 mb-3 row"></div>
@@ -45,25 +45,21 @@
     </div>
 
     <% if @artist.pro == false %>
-    <div class="actions btn btn-secondary text-center">
-      <%= link_to 'Upgrade To Pro', upgrade_artist_profile_path, data: {bs_toggle: 'modal', bs_target: '#upgrade-to-pro', remote: true}, class:"text-light text-decoration-none" %>
-    </div>
+      <div class="actions btn btn-secondary text-center">
+        <%= link_to 'Upgrade To Pro', upgrade_artist_profile_path, data: { bs_toggle: 'modal', bs_target: '#upgrade-to-pro', remote: true }, class: "text-light text-decoration-none" %>
+      </div>
     <% end %>
 
     <div class="actions text-center">
-      <%= f.submit "update", class:"btn btn-light btn-secondary btn-sm" %>
+      <%= f.submit "update", class: "btn btn-light btn-secondary btn-sm" %>
     </div>
   <% end %>
 </div>
 
-
-
-
 <div class="modal fade" id="upgrade-to-pro" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
   <div class="modal-dialog border border-secondary">
-    <div class="modal-content" >
+    <div class="modal-content">
       <div id="pooja"></div>
     </div>
   </div>
 </div>
-

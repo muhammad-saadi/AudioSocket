@@ -1,48 +1,50 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function () {
   var wrapper = $('.song-link');
   var add_button = $('.add-song-link');
 
-  $(add_button).click(function(e){
+  $(add_button).click(function (e) {
     e.preventDefault();
-    if($('.song-input').length!=4){
+    if ($('.song-input').length != 4) {
       $('.song-input').length++;
       $('.dynamic-inputs').append($(wrapper).html());
     }
   });
 
-  $( ".source" ).select2({ theme: "bootstrap" });
+  $('.source').select2({ theme: 'bootstrap' });
 
   $('.js-example-theme-multiple').select2();
 
   $('.js-example-theme-single').select2();
 
-  $("#dropdown").change(function(event){
-    if($( "#dropdown" ).val()=='other'){
+  $('#dropdown').change(function (event) {
+    if ($('#dropdown').val() == 'other') {
       $('.other-source').css('display', 'block');
     }
   });
 
-  $("#dropdown").change(function(event){
-    if($( "#dropdown" ).val()!='other'){
+  $('#dropdown').change(function (event) {
+    if ($('#dropdown').val() != 'other') {
       $('.other-source').css('display', 'none');
     }
   });
 
-  $( document ).ready(function() {
-      $(".assigned").on('change',function(){
+  $(document).ready(function () {
+    $('.assigned').on('change', function () {
       $.ajax({
-        url: "auditions/"+ $(this).attr("id") +"/set_manager",
+        url: 'auditions/' + $(this).attr('id') + '/set_manager',
         data: {
           assigned: $(this).val(),
-          id: $(this).attr("id")
+          id: $(this).attr('id'),
         },
         type: 'POST',
-        error: function() {alert('error');},
-        success: function(response){
+        error: function () {
+          alert('error');
+        },
+        success: function (response) {
           alert('updated');
-        }
+        },
       });
 
-      });
+    });
   });
 });

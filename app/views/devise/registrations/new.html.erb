@@ -1,39 +1,38 @@
 <div class="sign_up text-secondary bg-white">
-  <h2 class= "text-center fw-light mb-5 pt-5">Sign up</h2>
+  <h2 class="text-center fw-light mb-5 pt-5">Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="ms-4 me-4 mb-3">
-      <%= f.label :email, class:"form-label text-secondary" %><br />
+      <%= f.label :email, class: "form-label text-secondary" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-top-0 border-end-0 border-start-0" %>
     </div>
 
-    <div class= "ms-4 me-4 mb-3">
-      <%= f.label :password, class:"form-label text-secondary" %>
+    <div class="ms-4 me-4 mb-3">
+      <%= f.label :password, class: "form-label text-secondary" %>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-top-0 border-end-0 border-start-0" %>
     </div>
 
-    <div class= "field mb-3 ms-4 me-4">
-      <%= f.label :password_confirmation , class:"form-label text-secondary" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: "form-control border-top-0 border-end-0 border-start-0" %>
+    <div class="field mb-3 ms-4 me-4">
+      <%= f.label :password_confirmation, class: "form-label text-secondary" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control border-top-0 border-end-0 border-start-0" %>
     </div>
 
-    <div class= "mb-3 ms-4 me-4 text-center">
+    <div class="mb-3 ms-4 me-4 text-center">
       <%= f.select :role, collection: User.roles.keys.to_a %>
     </div>
 
     <div class="actions d-grid gap-2 col-8 mx-auto pb-5">
-      <%= f.submit "SIGN UP" , class: " btn btn-secondary" %>
+      <%= f.submit "SIGN UP", class: " btn btn-secondary" %>
     </div>
   <% end %>
 </div>
 
-<div class= "text-center">
+<div class="text-center">
   already have account
-  <%=render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
 </div>
-

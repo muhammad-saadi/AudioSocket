@@ -3,20 +3,20 @@
 </div>
 
 <div class="modal-body album">
-  <%= form_for @track,url: album_track_path do |f| %>
+  <%= form_for @track, url: album_track_path do |f| %>
     <div>
-      <p class="mb-0"><%= f.label :change_track, class:"form-label" %></p>
-      <p><%= f.file_field :song_link, class:"form-control" %></p>
+      <p class="mb-0"><%= f.label :change_track, class: "form-label" %></p>
+      <p><%= f.file_field :song_link, class: "form-control" %></p>
     </div>
 
     <div>
-      <p class="mb-0"><%= f.label :change_title, class:"form-label" %></p>
-      <p><%= f.text_field :title, class:"form-control" %></p>
+      <p class="mb-0"><%= f.label :change_title, class: "form-label" %></p>
+      <p><%= f.text_field :title, class: "form-control" %></p>
     </div>
 
     <div class="actions text-center">
-      <p><%= f.submit 'save & submit', class:"btn btn-light" %></p>
-      <p><%= f.submit 'ADD TO ALBUM & SAVE', class:"btn btn-secondary" %></p>
+      <p><%= f.submit 'save & submit', class: "btn btn-light" %></p>
+      <p><%= f.submit 'ADD TO ALBUM & SAVE', class: "btn btn-secondary" %></p>
     </div>
-  <%end%>
+  <% end %>
 </div>

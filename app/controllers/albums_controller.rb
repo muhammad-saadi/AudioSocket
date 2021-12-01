@@ -38,7 +38,7 @@ class AlbumsController < ApplicationController
   private
 
   def get_artist
-    @artist= current_user.artist_profile
+    @artist = current_user.artist_profile
   end
 
   def get_album
@@ -46,6 +46,6 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-   params.require(:album).permit(:album_name, :artist_profile_id, :artwork)
+    params.require(:album).permit(:album_name, :artist_profile_id, :artwork)
   end
 end

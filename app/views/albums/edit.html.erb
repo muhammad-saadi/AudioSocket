@@ -1,9 +1,9 @@
 <div class="album text-center">
   <p>
-    <p><%= form_for @album,url: album_path do |f| %></p>
+    <%= form_for @album, url: album_path do |f| %>
     <p><%= f.label :album_name %></p>
     <p><%= f.text_field :album_name %></p>
     <p><%= f.submit %>
-    <%end%>
+  <% end %>
   </p>
 </div>
