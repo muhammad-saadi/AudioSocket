@@ -1,0 +1,46 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end py-2 pe-5 bg-white">
+  <button class="btn btn-light"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "fs-5 text-decoration-none text-secondary" %></button>
+</div>
+
+<div class="container row container-height">
+  <div class="col-4 mt-5 mb-0 mh-100 my-0 py-0 mw-30 content-table">
+    <p><%= link_to 'Profile', profile_artist_profile_path, class: "text-muted" %></p>
+    <p class="fs-4">Music</p>
+  </div>
+
+  <div class="col-4 bg-white mt-5 main">
+    <div class="row bg-light mt-1">
+      <div class="col-6">
+        <h4>Album</h4>
+      </div>
+      <div class="col-6 d-grid justify-content-md-end">
+        <button class="btn btn-secondary text-light"><%= link_to 'CREATE ALBUM', new_album_path, data: { bs_toggle: 'modal', bs_target: '#createAlbum', remote: true }, class: "text-reset text-decoration-none" %></button>
+      </div>
+    </div>
+
+    <% @albums.each do |al| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><h5><%= link_to al.album_name, album_tracks_path(al), class: "text-reset text-decoration-none" %></h5>
+            </td>
+            <td class="d-grid justify-content-md-end">
+              <% if al.status == 'submit' %>
+                <p><%= link_to 'delete', album_path(al), method: :delete %> <%= link_to "edit", edit_album_path(al) %></p>
+              <% else %>
+                <p class="text-secondary">delete edit</p>
+              <% end %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal fade" id="createAlbum" tabindex="-1" aria-labelledby="AlbumModalLable" aria-hidden="true">
+  <div class="modal-dialog border border-secondary">
+    <div class="modal-content">
+      <div id="album-content"></div>
+    </div>
+  </div>
+</div>

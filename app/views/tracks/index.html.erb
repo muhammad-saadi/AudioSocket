@@ -1,0 +1,85 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end py-2 pe-5 bg-white">
+  <button class="btn btn-light"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "fs-5 text-decoration-none text-secondary" %></button>
+</div>
+
+<div class="container row container-height ">
+  <div class="col-4 mt-5 mb-0 mh-100 my-0 py-0 mw-30 content-table">
+    <p><%= link_to 'Profile', profile_artist_profile_path, class: "text-muted" %></p>
+    <p class="fs-4">Music</p>
+  </div>
+
+  <div class="col-4 pt-5 mt-5 bg-white main">
+    <div class="bg-light">
+      <h4 class="fw-3">Albums/<%= @album.album_name %>
+      </h4>
+    </div>
+
+    <div>
+      <% if @album.artwork.present? %>
+        <%= image_tag @album.artwork, height: 200, width: 200 %>
+      <% end %>
+    </div>
+
+    <div class="row bg-light mt-5">
+      <div class="col-6">
+        <h4>Tracks </h4>
+      </div>
+
+      <div class="col-6 d-grid justify-content-md-end">
+        <button class="btn btn-secondary text-light "><%= link_to 'CREATE Track', new_album_track_path(@album), data: { bs_toggle: 'modal', bs_target: '#createTrack', remote: true }, class: "text-reset text-decoration-none" %></button>
+      </div>
+    </div>
+
+    <div class=" mt-5 bg-white mb-0 mh-100 my-0 py-0 mw-30">
+      <table class="table text-secondary">
+        <thead>
+          <tr>
+            <td><h4>Track</h4></td>
+            <td><h4>music</h4></td>
+            <td><h4>status</h4></td>
+            <td><h4>Action</h4></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tracks.each do |al| %>
+            <tr>
+              <td><%= al.title %></td>
+              <td>
+                <% if al.song_link.attached? && al.song_link.audio? %>
+                  <audio controls>
+                    <source src="<%= rails_blob_url(al.song_link) %>" type="<%= al.song_link.content_type %>" />
+                  </audio>
+                <% end %></td>
+              <td>
+                <%= al.status %>
+              </td>
+              <td>
+                <% if al.status == 'submit' %>
+                  <%= link_to 'delete', album_track_path(@album, al), method: :delete %> <%= link_to "edit", edit_album_track_path(@album, al), data: { bs_toggle: 'modal', bs_target: '#editTrack', remote: true } %></p>
+                <% else %>
+                  <p class="text-secondary">delete edit</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createTrack" tabindex="-1" aria-labelledby="trackModalLable" aria-hidden="true">
+  <div class="modal-dialog border border-secondary">
+    <div class="modal-content">
+      <div id="track-content"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editTrack" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
+  <div class="modal-dialog border border-secondary">
+    <div class="modal-content">
+      <div id="trackkk"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end py-2 pe-5 bg-white">
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-secondary fs-5 text-decoration-none bg-light p-2" %>
+  <%= link_to 'edit', edit_artist_profile_path, class: "text-secondary fs-5 text-decoration-none bg-light p-2" %>
+</div>
+
+<div class="container row container-height ps-0">
+  <div class="col-4 bg-white mt-5 mb-0 my-0 ms-2 py-0">
+    <p class="fs-4">Profile</p>
+    <p><%= link_to 'Music', albums_path, class: "text-muted" %></p>
+  </div>
+
+  <div class="col-4 pt-4 ps-0 mt-2">
+    <div class="bg-light">
+      <div class="fw-3"><h4 class="ms-2">Profile</h4></p>
+      </div>
+
+      <div class="col-4 ps-2">
+        <div><h6 class="text-secondary">Artist Name: </h6><%= @artist.artist_name %></div>
+        <div><h6 class="text-secondary">Email: </h6><%= @artist.email %></div>
+        <div><h6 class="text-secondary">Website Link: </h6><%= @artist.website_link %></div>
+        <div><h6 class="text-secondary">Bio: </h6><%= @artist.bio %></div>
+        <div><h6 class="text-secondary">Country: </h6><%= @artist.country %></div>
+        <% @artist.social_link do |social| %>
+          <div><h6 class="text-secondary">Social_link: </h6><%= social %></div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="pt-5 mt-5 col-3">
+      <% if @artist.avatar.attached? %>
+        <p><%= image_tag @artist.avatar, height: 250, width: 250 %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

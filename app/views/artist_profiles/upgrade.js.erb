@@ -1,0 +1,28 @@
+$('#pooja').html("<%= escape_javascript (render 'upgrade', artist: @artist )%>");
+
+
+
+var form = $('#payment-form');
+var submitButton = $('#payment-submission');
+var client_token = "<%= @client_token %>";
+
+braintree.dropin.create({
+  authorization: client_token,
+  selector: '#dropin-container',
+}, function (err, dropinInstance) {
+  if (err) {
+    console.log('braintree Error', err);
+    return;
+  }
+  submitButton.on('click', function (event) {
+    dropinInstance.requestPaymentMethod(function (err, payload) {
+
+      if (err) {
+        console.log('payload Error', err);
+      }
+
+      $('#nonce').val(payload.nonce);
+      form.submit();
+    });
+  });
+});

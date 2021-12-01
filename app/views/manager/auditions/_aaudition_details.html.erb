@@ -1,0 +1,41 @@
+<div class="modal-header bg-secondary bg-opacity-25">
+  <p class="modal-title text-capitalize" id="exampleModalLabel"><%= audition.first_name %> <%= audition.last_name %>  <%= audition.status %></p>
+</div>
+
+<div class="row modal-body">
+  <div class="col-4 fw-bold">
+    <p>First Name</p>
+    <p>Last Name</p>
+    <p>Email</p>
+    <p>Artist Name</p>
+    <p>Track Links</p>
+    <p>Submitted at</p>
+    <p>Genres</p>
+    <p>Heard From</p>
+    <p>Additional Info</p>
+    <p></p>
+  </div>
+
+  <div class="col-4 text-secondary">
+    <p class="text-capitalize"><%= audition.first_name %> </p>
+    <p class="text-capitalize"><%= audition.last_name %></p>
+    <p><%= audition.email %></p>
+    <p class="mb-0"><%= audition.artist_name %></p>
+    <p class="mb-0"><%= link_to "#{audition.song_link.reject(&:blank?).join(', ')}" %></p>
+    <p><%= audition.created_at %></p>
+    <p><%= audition.genre.reject(&:blank?).join(', ') %></p>
+    <% if audition.source == 'other' %>
+      <p><%= audition.other_source %></p>
+    <% else %>
+      <%= audition.source %>
+    <% end %>
+    <p><%= audition.additional_info %></p>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary border-1 bg-light" id="<%= audition.id %>"><%= link_to 'accept', accept_mail_manager_audition_path(audition, status: "accepted"), data: { bs_toggle: "modal", bs_target: "#acceptMail", remote: true, class: "status" } %> </button>
+  <button type="button" class="btn btn-secondary status" id="<%= audition.id %>" value='deleted'>delete</button>
+  <button type="button" class="btn btn-secondary status" id="<%= audition.id %>" value='rejected'><%= link_to 'reject', accept_mail_manager_audition_path(audition, status: "rejected"), data: { bs_toggle: "modal", bs_target: "#acceptMail", remote: true, class: "status" } %> </button>
+</div>
